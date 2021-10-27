@@ -1,0 +1,168 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(153, 217, 234);
+    font-family: 'Kanit', sans-serif;
+}
+
+h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3vh;
+    font-size: 40px;
+}
+
+#home {
+    position: absolute;
+    top: 3vh;
+    left: 5vw;
+    transition: 0.5s;
+}
+
+#home:hover {
+    transform: scale(0.8);
+}
+
+#reiniciar {
+    position: absolute;
+    bottom: 8vh;
+    left: 5vw;
+    transition: 0.5s;
+}
+
+#reiniciar:hover {
+    transform: scale(1.2);
+}
+
+.pontuacoes {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+    margin-top: 20vh;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+#jogador {
+    color: #4998e0;
+}
+
+#computador {
+    color: #ba3838;
+}
+
+
+
+
+/* Jogo da velha em si */
+.mostrador{
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    align-items: center;
+    justify-content: center;
+}
+#jogadorDaVez{
+    margin-top: 25px;
+}
+.tabuleiro {
+    display: flex;
+    margin: 0 auto;
+   
+    height: 520px;
+    width: 600px;
+
+    margin-top: 50px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: royalblue;
+    border: 3px solid black;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    
+
+}
+
+.grid{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: center; 
+    justify-content: center;
+    justify-items: center;
+
+
+    float: left;
+}
+
+.celula{
+
+    display: flex;
+    width: 165px;
+    height: 150px;
+    font-size: 30pt;
+
+    margin: 4px 2px;
+    font-size: 100px;
+    padding: 50px;
+    border-radius: 3px;
+
+
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+
+    background-color: pink; 
+}
+
+.mostrador img{ 
+    margin-top: auto;
+    height: 50px;
+    width: 50px;
+}
+
+.celula img{
+    height: 100px;
+    width: 100px;
+}
+
+
+
+
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 40px;
+        margin-top: 12vh;
+    }
+
+    .pontuacoes {
+        margin-top: 60vh;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    
+    #reiniciar {
+        width: 43px;
+    }
+
+    .container{
+        width: 400px;
+    }
+    .celula{
+        width: 100px;
+    }
+}

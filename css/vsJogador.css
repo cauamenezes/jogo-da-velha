@@ -1,0 +1,138 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: "Kanit", sans-serif;
+    background-color: rgb(153, 217, 234);
+}
+
+header {
+    width: 100vw;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+#home {
+    position: absolute;
+    top: 3vh;
+    left: 5vw;
+    transition: 0.5s;
+}
+
+#home:hover {
+    transform: scale(0.8);
+}
+
+main {
+    flex-grow: 1;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grade {
+    display: flex;
+    flex-wrap: wrap;
+    width: 500px;
+    height: 500px;
+}
+
+.celula {
+    display: flex;
+    width: 33.3%;
+    height: 33.3%;
+    border-left: 8px solid #000;
+    border-bottom: 8px solid #000;
+}
+
+.celula:nth-child(1),
+.celula:nth-child(4),
+.celula:nth-child(7) {
+    border-left: 0;
+}
+
+.celula:nth-child(7),
+.celula:nth-child(8),
+.celula:nth-child(9) {
+    border-bottom: 0;
+}
+
+.celula:hover {
+    background-color: rgb(150, 200, 200);
+}
+
+footer {
+    width: 100vw;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#reiniciar {
+    position: absolute;
+    bottom: 3vh;
+    left: 5vw;
+    transition: 0.5s;
+}
+
+#reiniciar:hover {
+    transform: scale(1.2);
+}
+
+.pontuacoes {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 5vw;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+#jogador1 {
+    color: #4998e0;
+}
+
+#jogador2 {
+    color: #ba3838;
+}
+
+@media (max-width: 768px) {
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .grade {
+        width: 350px;
+        height: 400px;
+    }
+
+    #home, #reiniciar {
+        width: 48px;
+    }
+
+
+}

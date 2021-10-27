@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Kanit&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="../css/vsComputador.css" />
+        <script src="../js/facil.js" defer></script>
+        <title>Fácil</title>
+    </head>
+    <body>
+        <header>
+            <a href="../index.html">
+                <img src="../img/home.png" alt="home" id="home" />
+            </a>
+            <div id="mostrador" class="mostrador">
+                <h1>Vez de:</h1>
+                    <img src="" alt="">
+            </div>
+        </header>
+
+        <main>
+            <!-- aqui vão as grades do jogo da velha -->
+            <div class="tabuleiro">
+
+                <div class="grid">
+    
+                    <div class="celula" id="a1" jogada=""></div>
+                    <div class="celula" id="a2" jogada=""></div>
+                    <div class="celula" id="a3" jogada=""></div>
+              
+             
+                    <div class="celula" id="b1" jogada=""></div>
+                    <div class="celula" id="b2" jogada=""></div>
+                    <div class="celula" id="b3" jogada=""></div>
+      
+                    <div class="celula" id="c1" jogada=""></div>
+                    <div class="celula" id="c2" jogada=""></div>
+                    <div class="celula" id="c3" jogada=""></div>
+       
+                </div>
+            </div>
+        </main>
+
+        <footer>
+          
+            <div id="reiniciar">
+            <a href="./facil.html">
+              
+                <img src="../img/reiniciar.png" alt="reiniciar" id="reiniciar" />
+
+    
+            </a>
+            </div>
+
+        
+
+            <div class="pontuacoes">
+                <div class="jogador">
+                    <h2 id="jogador">Vitórias X</h2>
+                    <h2 id="pontosJogador" id="px">0</h2>
+                </div>
+                <div class="empates">
+                    <h2 id="empates">Empates</h2>
+                    <h2 id="qtdeEmpates" id="pe">0</h2>
+                </div>
+                <div class="computador">
+                    <h2 id="computador">Vitórias O</h2>
+                    <h2 id="pontosComputador" id="po">0</h2>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,105 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(153, 217, 234);
+    font-family: 'Kanit', sans-serif;
+    flex-direction: column;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    height: 65vh;
+    width: 35vw;
+    background-color: rgb(239, 228, 176);
+    justify-content: space-evenly;
+    box-shadow: 2px 2px #000, -0.5em 0 0.4em #000;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 48px;
+}
+
+h2 {
+    font-weight: normal;
+    font-size: 28px;
+}
+
+.botoes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10vh;
+    gap: 30px;
+}
+
+button {
+    width: 25vw;
+    height: 6vh;
+    border-radius: 10px;
+    font-size: 18px;
+    font-family: 'Kanit', sans-serif;
+    border: 2px solid #000000;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.vsJogador {
+    background-color: rgb(132, 247, 228);
+}
+
+.vsJogador:hover {
+    box-shadow: inset 0 0 0.5em #274360, 0 0 1em #000;
+}
+
+.vsComputador {
+    background-color: pink;
+}
+
+.vsComputador:hover {
+    box-shadow: inset 0 0 0.5em #ff69b4, 0 0 1em #000;
+}
+
+footer {
+    font-size: 18px;
+    position: absolute;
+    bottom: 40px;
+}
+
+@media (max-width: 768px) {
+    main {
+        height: 70vh;
+        width: 85vw;
+    }
+
+    button {
+        width: 65vw;
+        height: 7vh;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+    footer {
+        font-size: 14px;
+        max-width: 90vw;
+        text-align: center;
+    }
+}
