@@ -40,9 +40,9 @@
             <div class="modalGanhador">
                 <div class="containerModalGanhador">
                     <h1 id="vencedorModal"></h1>
-                    <a href="../html/dificil.html">
-                        <button>Jogar novamente</button>
-                    </a>
+                    <button onclick="limparGrade(), ocultarModal()">
+                        Jogar novamente
+                    </button>
                     <a href="../index.html">
                         <button>Voltar ao menu</button>
                     </a>
@@ -51,13 +51,12 @@
         </main>
 
         <footer>
-            <a href="../html/dificil.html">
-                <img
-                    src="../img/reiniciar.png"
-                    alt="reiniciar"
-                    id="reiniciar"
-                />
-            </a>
+            <img
+                src="../img/reiniciar.png"
+                alt="reiniciar"
+                id="reiniciar"
+                onclick="limparGrade()"
+            />
 
             <div class="pontuacoes">
                 <div class="jogador">

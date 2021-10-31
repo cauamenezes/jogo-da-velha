@@ -6,6 +6,10 @@ let vencedorModal = document.getElementById('vencedorModal');
 let pontosJogador = document.getElementById('pontosJogador');
 let qtdeEmpates = document.getElementById('qtdeEmpates');
 let pontosComputador = document.getElementById('pontosComputador');
+let calculaPontosJogador = 0;
+let calculaPontosComputador = 0;
+let calculaEmpates = 0;
+let jogoEmAndamento = true;
 
 pontosJogador.innerHTML = 0;
 qtdeEmpates.innerHTML = 0;
@@ -17,10 +21,12 @@ const jogar = (divId) => {
     if (celulas[divId].textContent == '') {
         document.getElementById(divId).innerHTML = 'X';
         verificarGanhador();
-        setTimeout(() => {
-            bot();
-            verificarGanhador();
-        }, 250);
+        if (jogoEmAndamento) {
+            setTimeout(() => {
+                bot();
+                verificarGanhador();
+            }, 250);
+        }
     }
 };
 
@@ -53,7 +59,9 @@ const verificarGanhador = () => {
     ) {
         mostrarModal();
         vencedorModal.innerHTML = 'Você venceu!';
-        pontosJogador.innerHTML = +1;
+        calculaPontosJogador++;
+        pontosJogador.innerHTML = calculaPontosJogador;
+        jogoEmAndamento = false;
     } else if (
         (celulas[0].textContent == 'O' &&
             celulas[1].textContent == 'O' &&
@@ -82,7 +90,9 @@ const verificarGanhador = () => {
     ) {
         mostrarModal();
         vencedorModal.innerHTML = 'Computador venceu!';
-        pontosComputador.innerHTML = +1;
+        calculaPontosComputador++;
+        pontosComputador.innerHTML = calculaPontosComputador;
+        jogoEmAndamento = false;
     } else if (
         celulas[0].textContent != '' &&
         celulas[1].textContent != '' &&
@@ -96,7 +106,9 @@ const verificarGanhador = () => {
     ) {
         mostrarModal();
         vencedorModal.innerHTML = 'Empate!';
-        qtdeEmpates.innerHTML = +1;
+        calculaEmpates++;
+        qtdeEmpates.innerHTML = calculaEmpates;
+        jogoEmAndamento = false;
     }
 };
 
@@ -121,6 +133,17 @@ function bot() {
     //     }
 }
 
-function mostrarModal() {
+const limparGrade = () => {
+    for (let i = 0; i < 9; i++) {
+        celulas[i].innerHTML = '';
+    }
+    jogoEmAndamento = true;
+};
+
+const mostrarModal = () => {
     document.querySelector('.modalGanhador').style.display = 'flex';
-}
+};
+
+const ocultarModal = () => {
+    document.querySelector('.modalGanhador').style.display = 'none';
+};

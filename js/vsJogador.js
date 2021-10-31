@@ -6,6 +6,9 @@ let vencedorModal = document.getElementById('vencedorModal');
 let pontosJogador1 = document.getElementById('pontosJogador1');
 let qtdeEmpates = document.getElementById('qtdeEmpates');
 let pontosJogador2 = document.getElementById('pontosJogador2');
+let calculaPontosJogador1 = 0;
+let calculaPontosJogador2 = 0;
+let calculaEmpates = 0;
 
 pontosJogador1.innerHTML = 0;
 qtdeEmpates.innerHTML = 0;
@@ -58,7 +61,8 @@ const verificarGanhador = () => {
     ) {
         mostrarModal();
         vencedorModal.innerHTML = 'Jogador 1 venceu!';
-        pontosJogador1.innerHTML = +1;
+        calculaPontosJogador1++;
+        pontosJogador1.innerHTML = calculaPontosJogador1;
     } else if (
         (celulas[0].textContent == 'O' &&
             celulas[1].textContent == 'O' &&
@@ -87,7 +91,8 @@ const verificarGanhador = () => {
     ) {
         mostrarModal();
         vencedorModal.innerHTML = 'Jogador 2 venceu!';
-        pontosJogador2.innerHTML = +1;
+        calculaPontosJogador2++;
+        pontosJogador2.innerHTML = calculaPontosJogador2;
     } else if (
         celulas[0].textContent != '' &&
         celulas[1].textContent != '' &&
@@ -101,10 +106,23 @@ const verificarGanhador = () => {
     ) {
         mostrarModal();
         vencedorModal.innerHTML = 'Empate!';
-        qtdeEmpates.innerHTML = +1;
+        calculaEmpates++;
+        qtdeEmpates.innerHTML = calculaEmpates;
     }
 };
 
-function mostrarModal() {
+const limparGrade = () => {
+    for (let i = 0; i < 9; i++) {
+        celulas[i].innerHTML = '';
+    }
+    vezJogador = jogador1;
+    turno.innerHTML = 'Vez de: Jogador 1';
+};
+
+const mostrarModal = () => {
     document.querySelector('.modalGanhador').style.display = 'flex';
-}
+};
+
+const ocultarModal = () => {
+    document.querySelector('.modalGanhador').style.display = 'none';
+};

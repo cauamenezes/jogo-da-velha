@@ -6,6 +6,10 @@ let vencedorModal = document.getElementById('vencedorModal');
 let pontosJogador = document.getElementById('pontosJogador');
 let qtdeEmpates = document.getElementById('qtdeEmpates');
 let pontosComputador = document.getElementById('pontosComputador');
+let calculaPontosJogador = 0;
+let calculaPontosComputador = 0;
+let calculaEmpates = 0;
+let jogoEmAndamento = true;
 
 pontosJogador.innerHTML = 0;
 qtdeEmpates.innerHTML = 0;
@@ -17,10 +21,12 @@ const jogar = (divId) => {
     if (celulas[divId].textContent == '') {
         document.getElementById(divId).innerHTML = 'X';
         verificarGanhador();
-        setTimeout(() => {
-            bot();
-            verificarGanhador();
-        }, 250);
+        if (jogoEmAndamento) {
+            setTimeout(() => {
+                bot();
+                verificarGanhador();
+            }, 250);
+        }
     }
 };
 
@@ -53,7 +59,9 @@ const verificarGanhador = () => {
     ) {
         mostrarModal();
         vencedorModal.innerHTML = 'Você venceu!';
-        pontosJogador.innerHTML = +1;
+        calculaPontosJogador++;
+        pontosJogador.innerHTML = calculaPontosJogador;
+        jogoEmAndamento = false;
     } else if (
         (celulas[0].textContent == 'O' &&
             celulas[1].textContent == 'O' &&
@@ -82,7 +90,9 @@ const verificarGanhador = () => {
     ) {
         mostrarModal();
         vencedorModal.innerHTML = 'Computador venceu!';
-        pontosComputador.innerHTML = +1;
+        calculaPontosComputador++;
+        pontosComputador.innerHTML = calculaPontosComputador;
+        jogoEmAndamento = false;
     } else if (
         celulas[0].textContent != '' &&
         celulas[1].textContent != '' &&
@@ -96,13 +106,12 @@ const verificarGanhador = () => {
     ) {
         mostrarModal();
         vencedorModal.innerHTML = 'Empate!';
-        qtdeEmpates.innerHTML = +1;
+        calculaEmpates++;
+        qtdeEmpates.innerHTML = calculaEmpates;
+        jogoEmAndamento = false;
     }
 };
 
-let fechamentoVertical = false;
-let fechamentoHorizontal = false;
-let fechamentoDiagonal = false;
 let botJaJogou;
 let primeiraJogada = true;
 
@@ -152,81 +161,52 @@ const bot = () => {
     botGanha(4, 6, 2);
 
     //Impede de fechar na vertical
-    fecharJogadorVertical(0, 3, 6);
-    fecharJogadorVertical(1, 4, 7);
-    fecharJogadorVertical(2, 5, 8);
-    fecharJogadorVertical(3, 6, 0);
-    fecharJogadorVertical(4, 7, 1);
-    fecharJogadorVertical(5, 8, 2);
-    fecharJogadorVertical(0, 6, 3);
-    fecharJogadorVertical(1, 7, 4);
-    fecharJogadorVertical(2, 8, 5);
+    fecharJogador(0, 3, 6);
+    fecharJogador(1, 4, 7);
+    fecharJogador(2, 5, 8);
+    fecharJogador(3, 6, 0);
+    fecharJogador(4, 7, 1);
+    fecharJogador(5, 8, 2);
+    fecharJogador(0, 6, 3);
+    fecharJogador(1, 7, 4);
+    fecharJogador(2, 8, 5);
 
     //Impede de fechar na horizontal
     if (botJaJogou == false) {
-        fecharJogadorHorizontal(0, 1, 2);
-        fecharJogadorHorizontal(3, 4, 5);
-        fecharJogadorHorizontal(6, 7, 8);
-        fecharJogadorHorizontal(1, 2, 0);
-        fecharJogadorHorizontal(4, 5, 3);
-        fecharJogadorHorizontal(7, 8, 6);
-        fecharJogadorHorizontal(0, 2, 1);
-        fecharJogadorHorizontal(3, 5, 4);
-        fecharJogadorHorizontal(6, 8, 7);
+        fecharJogador(0, 1, 2);
+        fecharJogador(3, 4, 5);
+        fecharJogador(6, 7, 8);
+        fecharJogador(1, 2, 0);
+        fecharJogador(4, 5, 3);
+        fecharJogador(7, 8, 6);
+        fecharJogador(0, 2, 1);
+        fecharJogador(3, 5, 4);
+        fecharJogador(6, 8, 7);
     }
 
     //Impede de fechar na diagonal
     if (botJaJogou == false) {
-        fecharJogadorDiagonal(0, 4, 8);
-        fecharJogadorDiagonal(0, 8, 4);
-        fecharJogadorDiagonal(4, 8, 0);
-        fecharJogadorDiagonal(2, 4, 6);
-        fecharJogadorDiagonal(2, 6, 4);
-        fecharJogadorDiagonal(4, 6, 2);
-        fecharJogadorDiagonal(4, 8, 6);
+        fecharJogador(0, 4, 8);
+        fecharJogador(0, 8, 4);
+        fecharJogador(4, 8, 0);
+        fecharJogador(2, 4, 6);
+        fecharJogador(2, 6, 4);
+        fecharJogador(4, 6, 2);
+        fecharJogador(4, 8, 6);
     }
 
     if (botJaJogou == false) {
         jogarAleatorio();
     }
 };
-const fecharJogadorVertical = (indice1, indice2, indiceFechamento) => {
-    if (
-        celulas[indice1].textContent == 'X' &&
-        celulas[indice2].textContent == 'X' &&
-        fechamentoVertical == false
-    ) {
-        if (celulas[indiceFechamento].textContent == '') {
-            document.getElementById(indiceFechamento).innerHTML = 'O';
-            fechamentoVertical = true;
-            botJaJogou = true;
-        }
-    }
-};
 
-const fecharJogadorHorizontal = (indice1, indice2, indiceFechamento) => {
+const fecharJogador = (indice1, indice2, indiceFechamento) => {
     if (
         celulas[indice1].textContent == 'X' &&
-        celulas[indice2].textContent == 'X' &&
-        fechamentoHorizontal == false
+        celulas[indice2].textContent == 'X'
     ) {
         if (celulas[indiceFechamento].textContent == '') {
             document.getElementById(indiceFechamento).innerHTML = 'O';
-            fechamentoHorizontal = true;
-            botJaJogou = true;
-        }
-    }
-};
-
-const fecharJogadorDiagonal = (indice1, indice2, indiceFechamento) => {
-    if (
-        celulas[indice1].textContent == 'X' &&
-        celulas[indice2].textContent == 'X' &&
-        fechamentoDiagonal == false
-    ) {
-        if (celulas[indiceFechamento].textContent == '') {
-            document.getElementById(indiceFechamento).innerHTML = 'O';
-            fechamentoDiagonal = true;
             botJaJogou = true;
         }
     }
@@ -253,6 +233,18 @@ const botGanha = (indice1, indice2, indiceFechamento) => {
         botJaJogou = true;
     }
 };
+
+const limparGrade = () => {
+    for (let i = 0; i < 9; i++) {
+        celulas[i].innerHTML = '';
+    }
+    jogoEmAndamento = true;
+};
+
 const mostrarModal = () => {
     document.querySelector('.modalGanhador').style.display = 'flex';
+};
+
+const ocultarModal = () => {
+    document.querySelector('.modalGanhador').style.display = 'none';
 };
