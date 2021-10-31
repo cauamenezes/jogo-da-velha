@@ -5,15 +5,24 @@
 }
 
 body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: "Kanit", sans-serif;
     background-color: rgb(153, 217, 234);
-    font-family: 'Kanit', sans-serif;
+}
+
+header {
+    width: 100vw;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 h1 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 3vh;
     font-size: 40px;
 }
 
@@ -28,9 +37,57 @@ h1 {
     transform: scale(0.8);
 }
 
+main {
+    flex-grow: 1;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grade {
+    display: flex;
+    flex-wrap: wrap;
+    width: 500px;
+    height: 500px;
+}
+
+.celula {
+    display: flex;
+    width: 33.3%;
+    height: 33.3%;
+    border-left: 8px solid #000;
+    border-bottom: 8px solid #000;
+}
+
+.celula:nth-child(1),
+.celula:nth-child(4),
+.celula:nth-child(7) {
+    border-left: 0;
+}
+
+.celula:nth-child(7),
+.celula:nth-child(8),
+.celula:nth-child(9) {
+    border-bottom: 0;
+}
+
+.celula:hover {
+    background-color: rgb(150, 200, 200);
+}
+
+footer {
+    width: 100vw;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
 #reiniciar {
     position: absolute;
-    bottom: 8vh;
+    bottom: 3vh;
     left: 5vw;
     transition: 0.5s;
 }
@@ -42,9 +99,8 @@ h1 {
 .pontuacoes {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
     text-align: center;
-    margin-top: 20vh;
+    gap: 5vw;
 }
 
 h2 {
@@ -59,110 +115,28 @@ h2 {
     color: #ba3838;
 }
 
-
-
-
-/* Jogo da velha em si */
-.mostrador{
-    display: flex;
-    flex-direction: row;
-    justify-self: center;
-    align-items: center;
-    justify-content: center;
-}
-#jogadorDaVez{
-    margin-top: 25px;
-}
-.tabuleiro {
-    display: flex;
-    margin: 0 auto;
-   
-    height: 520px;
-    width: 600px;
-
-    margin-top: 50px;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: royalblue;
-    border: 3px solid black;
-    align-items: center;
-    justify-content: center;
-    justify-items: center;
-    
-
-}
-
-.grid{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
-    align-items: center; 
-    justify-content: center;
-    justify-items: center;
-
-
-    float: left;
-}
-
-.celula{
-
-    display: flex;
-    width: 165px;
-    height: 150px;
-    font-size: 30pt;
-
-    margin: 4px 2px;
-    font-size: 100px;
-    padding: 50px;
-    border-radius: 3px;
-
-
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-
-    background-color: pink; 
-}
-
-.mostrador img{ 
-    margin-top: auto;
-    height: 50px;
-    width: 50px;
-}
-
-.celula img{
-    height: 100px;
-    width: 100px;
-}
-
-
-
-
-
 @media (max-width: 768px) {
-    h1 {
-        font-size: 40px;
-        margin-top: 12vh;
-    }
 
-    .pontuacoes {
-        margin-top: 60vh;
+    h1 {
+        font-size: 24px;
+        margin-top: 20vh;
     }
 
     h2 {
-        font-size: 18px;
+        font-size: 20px;
     }
 
-    
-    #reiniciar {
-        width: 43px;
+    .grade {
+        width: 350px;
+        height: 400px;
     }
 
-    .container{
-        width: 400px;
+    #home, #reiniciar {
+        width: 48px;
     }
-    .celula{
-        width: 100px;
+
+    .pontuacoes {
+        margin-bottom: 20vh;
     }
+
 }
