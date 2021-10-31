@@ -16,12 +16,12 @@ turno.innerHTML = 'Vez de: Jogador 1';
 let vezJogador = jogador1;
 
 const jogar = (divId) => {
-    if (vezJogador == jogador1) {
+    if (vezJogador == jogador1 && celulas[divId].textContent == '') {
         document.getElementById(divId).innerHTML = 'X';
         verificarGanhador();
         vezJogador = jogador2;
         turno.innerHTML = 'Vez de: Jogador 2';
-    } else if (vezJogador == jogador2) {
+    } else if (vezJogador == jogador2 && celulas[divId].textContent == '') {
         document.getElementById(divId).innerHTML = 'O';
         verificarGanhador();
         vezJogador = jogador1;

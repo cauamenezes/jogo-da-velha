@@ -3,22 +3,24 @@
 const celulas = document.getElementsByClassName('celula');
 let turno = document.getElementById('tituloTurno');
 let vencedorModal = document.getElementById('vencedorModal');
+let pontosJogador = document.getElementById('pontosJogador');
+let qtdeEmpates = document.getElementById('qtdeEmpates');
+let pontosComputador = document.getElementById('pontosComputador');
 
-turno.innerHTML = 'Vez de: Jogador';
+pontosJogador.innerHTML = 0;
+qtdeEmpates.innerHTML = 0;
+pontosComputador.innerHTML = 0;
 
-let vezJogador = jogador1;
+turno.innerHTML = 'Jogo da Velha: Fácil';
 
 const jogar = (divId) => {
-    if (vezJogador == jogador1) {
+    if (celulas[divId].textContent == '') {
         document.getElementById(divId).innerHTML = 'X';
         verificarGanhador();
-        vezJogador = jogador2;
-        turno.innerHTML = 'Vez de: Computador';
-    } else if (vezJogador == jogador2) {
-        document.getElementById(divId).innerHTML = 'O';
-        verificarGanhador();
-        vezJogador = jogador1;
-        turno.innerHTML = 'Vez de: Jogador';
+        setTimeout(() => {
+            bot();
+            verificarGanhador();
+        }, 250);
     }
 };
 
@@ -51,6 +53,7 @@ const verificarGanhador = () => {
     ) {
         mostrarModal();
         vencedorModal.innerHTML = 'Jogador venceu!';
+        pontosJogador.innerHTML = +1;
     } else if (
         (celulas[0].textContent == 'O' &&
             celulas[1].textContent == 'O' &&
@@ -79,6 +82,7 @@ const verificarGanhador = () => {
     ) {
         mostrarModal();
         vencedorModal.innerHTML = 'Computador venceu!';
+        pontosComputador.innerHTML = +1;
     } else if (
         celulas[0].textContent != '' &&
         celulas[1].textContent != '' &&
@@ -92,8 +96,30 @@ const verificarGanhador = () => {
     ) {
         mostrarModal();
         vencedorModal.innerHTML = 'Empate!';
+        qtdeEmpates.innerHTML = +1;
     }
 };
+
+function bot() {
+    for (let i = 0; i < 10; i++) {
+        const indice = Math.random() * (8 - 0) + 0;
+        const indiceInteiro = Math.trunc(indice);
+        if (celulas[indiceInteiro].textContent == '') {
+            document.getElementById(indiceInteiro).innerHTML = 'O';
+            break;
+        }
+    }
+    //     let s = 0;
+    //     while (s < 8) {
+    //         const indice = Math.random() * (8 - 0) + 0;
+    //         const indiceInteiro = Math.trunc(indice);
+    //         if (celulas[indiceInteiro].textContent == '') {
+    //             document.getElementById(indiceInteiro).innerHTML = 'O';
+    //             break;
+    //         }
+    //         s++;
+    //     }
+}
 
 function mostrarModal() {
     document.querySelector('.modalGanhador').style.display = 'flex';

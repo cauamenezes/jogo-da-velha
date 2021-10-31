@@ -6,7 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Kanit&display=swap"
+            rel="stylesheet"
+        />
         <link rel="stylesheet" href="../css/vsComputador.css" />
         <script src="../js/medio.js" defer></script>
         <title>Médio</title>
@@ -16,44 +19,60 @@
             <a href="../index.html">
                 <img src="../img/home.png" alt="home" id="home" />
             </a>
-            <h1>Vez de: Computador</h1>
+            <h1 id="tituloTurno"></h1>
         </header>
 
         <main>
-             <div class="grade">
-                <div class="celula" id="0"></div>
-                <div class="celula" id="1"></div>
-                <div class="celula" id="2"></div>
-                
-                <div class="celula" id="3"></div>
-                <div class="celula" id="4"></div>
-                <div class="celula" id="5"></div>
-                
-                <div class="celula" id="6"></div>
-                <div class="celula" id="7"></div>
-                <div class="celula" id="8"></div>
+            <div class="grade">
+                <div class="celula" id="0" onclick="jogar(this.id)"></div>
+                <div class="celula" id="1" onclick="jogar(this.id)"></div>
+                <div class="celula" id="2" onclick="jogar(this.id)"></div>
+
+                <div class="celula" id="3" onclick="jogar(this.id)"></div>
+                <div class="celula" id="4" onclick="jogar(this.id)"></div>
+                <div class="celula" id="5" onclick="jogar(this.id)"></div>
+
+                <div class="celula" id="6" onclick="jogar(this.id)"></div>
+                <div class="celula" id="7" onclick="jogar(this.id)"></div>
+                <div class="celula" id="8" onclick="jogar(this.id)"></div>
             </div>
-        </main> 
+
+            <div class="modalGanhador">
+                <div class="containerModalGanhador">
+                    <h1 id="vencedorModal"></h1>
+                    <a href="../html/medio.html">
+                        <button>Jogar novamente</button>
+                    </a>
+                    <a href="../index.html">
+                        <button>Voltar ao menu</button>
+                    </a>
+                </div>
+            </div>
+        </main>
 
         <footer>
-            <a href="./medio.html">
-                <img src="../img/reiniciar.png" alt="reiniciar" id="reiniciar" />
+            <a href="../html/medio.html">
+                <img
+                    src="../img/reiniciar.png"
+                    alt="reiniciar"
+                    id="reiniciar"
+                />
             </a>
 
             <div class="pontuacoes">
                 <div class="jogador">
                     <h2 id="jogador">Jogador</h2>
-                    <h2 id="pontosJogador">10</h2>
+                    <h2 id="pontosJogador"></h2>
                 </div>
                 <div class="empates">
                     <h2 id="empates">Empates</h2>
-                    <h2 id="qtdeEmpates">2</h2>
+                    <h2 id="qtdeEmpates"></h2>
                 </div>
                 <div class="computador">
                     <h2 id="computador">Computador</h2>
-                    <h2 id="pontosComputador">1</h2>
+                    <h2 id="pontosComputador"></h2>
                 </div>
-            </div> 
+            </div>
         </footer>
     </body>
 </html>
