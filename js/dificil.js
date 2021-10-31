@@ -239,6 +239,7 @@ const limparGrade = () => {
         celulas[i].innerHTML = '';
     }
     jogoEmAndamento = true;
+    primeiraJogada = true;
 };
 
 const mostrarModal = () => {
