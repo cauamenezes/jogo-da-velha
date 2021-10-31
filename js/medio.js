@@ -52,7 +52,7 @@ const verificarGanhador = () => {
             celulas[6].textContent == 'X')
     ) {
         mostrarModal();
-        vencedorModal.innerHTML = 'Jogador venceu!';
+        vencedorModal.innerHTML = 'Você venceu!';
         pontosJogador.innerHTML = +1;
     } else if (
         (celulas[0].textContent == 'O' &&
