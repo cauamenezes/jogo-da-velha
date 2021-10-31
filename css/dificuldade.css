@@ -15,6 +15,23 @@ body {
     font-family: 'Kanit', sans-serif;
 }
 
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#back {
+    position: absolute;
+    top: 3vh;
+    left: 5vw;
+    transition: 0.5s;
+}
+
+#back:hover {
+    transform: scale(0.8);
+}
+
 main {
     height: 65vh;
     width: 35vw;
@@ -101,6 +118,10 @@ footer {
 }
 
 @media (max-width: 768px) {
+    #back {
+        width: 48px;
+    }
+
     main {
         height: 70vh;
         width: 85vw;

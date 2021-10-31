@@ -189,4 +189,15 @@ a:visited {
     .pontuacoes {
         margin-bottom: 20vh;
     }
+
+    .containerModalGanhador {
+        width: 70%;
+        padding: 5px;
+        text-align: center;
+    }
+
+    .containerModalGanhador button {
+        width: 60vw;
+        height: 7vh;
+    }
 }
