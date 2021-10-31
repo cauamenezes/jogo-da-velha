@@ -161,15 +161,17 @@ const bot = () => {
     botGanha(4, 6, 2);
 
     //Impede de fechar na vertical
-    fecharJogador(0, 3, 6);
-    fecharJogador(1, 4, 7);
-    fecharJogador(2, 5, 8);
-    fecharJogador(3, 6, 0);
-    fecharJogador(4, 7, 1);
-    fecharJogador(5, 8, 2);
-    fecharJogador(0, 6, 3);
-    fecharJogador(1, 7, 4);
-    fecharJogador(2, 8, 5);
+    if (botJaJogou == false) {
+        fecharJogador(0, 3, 6);
+        fecharJogador(1, 4, 7);
+        fecharJogador(2, 5, 8);
+        fecharJogador(3, 6, 0);
+        fecharJogador(4, 7, 1);
+        fecharJogador(5, 8, 2);
+        fecharJogador(0, 6, 3);
+        fecharJogador(1, 7, 4);
+        fecharJogador(2, 8, 5);
+    }
 
     //Impede de fechar na horizontal
     if (botJaJogou == false) {
@@ -194,10 +196,19 @@ const bot = () => {
         fecharJogador(4, 6, 2);
         fecharJogador(4, 8, 6);
     }
+    if (celulas[0].textContent == 'X' && celulas[8].textContent == 'X') {
+        document.getElementById(7).innerHTML = 'O';
+        botJaJogou = true;
+    }
+    if (celulas[2].textContent == 'X' && celulas[6].textContent == 'X') {
+        document.getElementById(7).innerHTML = 'O';
+        botJaJogou = true;
+    }
 
     if (botJaJogou == false) {
         jogarAleatorio();
     }
+    botJaJogou = false;
 };
 
 const fecharJogador = (indice1, indice2, indiceFechamento) => {
