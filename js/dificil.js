@@ -25,7 +25,7 @@ const jogar = (divId) => {
             setTimeout(() => {
                 bot();
                 verificarGanhador();
-            }, 250);
+            }, 100);
         }
     }
 };
