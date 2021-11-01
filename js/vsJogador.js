@@ -105,7 +105,7 @@ const verificarGanhador = () => {
         celulas[8].textContent != ''
     ) {
         mostrarModal();
-        vencedorModal.innerHTML = 'Empate!';
+        vencedorModal.innerHTML = 'Velha!';
         calculaEmpates++;
         qtdeEmpates.innerHTML = calculaEmpates;
     }
