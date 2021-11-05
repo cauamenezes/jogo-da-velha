@@ -184,6 +184,11 @@ const bot = () => {
         fecharJogador(0, 2, 1);
         fecharJogador(3, 5, 4);
         fecharJogador(6, 8, 7);
+        fecharJogador(0, 5, 7);
+        fecharJogador(3, 7, 6);
+        fecharJogador(1, 3, 0);
+        fecharJogador(1, 5, 2);
+        fecharJogador(5, 7, 8);
     }
 
     //Impede de fechar na diagonal
