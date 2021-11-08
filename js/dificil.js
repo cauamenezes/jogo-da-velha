@@ -10,6 +10,8 @@ let calculaPontosJogador = 0;
 let calculaPontosComputador = 0;
 let calculaEmpates = 0;
 let jogoEmAndamento = true;
+let jogada = 1;
+let botJaJogou;
 
 pontosJogador.innerHTML = 0;
 qtdeEmpates.innerHTML = 0;
@@ -25,6 +27,7 @@ const jogar = (divId) => {
             setTimeout(() => {
                 bot();
                 verificarGanhador();
+                jogada++;
             }, 100);
         }
     }
@@ -112,20 +115,15 @@ const verificarGanhador = () => {
     }
 };
 
-let botJaJogou;
-let primeiraJogada = true;
-
 const bot = () => {
     botJaJogou = false;
 
-    if (primeiraJogada) {
+    if (jogada == 1) {
         if (celulas[4].textContent == '') {
             document.getElementById(4).innerHTML = 'O';
-            primeiraJogada = false;
             botJaJogou = true;
         } else {
             document.getElementById(0).innerHTML = 'O';
-            primeiraJogada = false;
             botJaJogou = true;
         }
     }
@@ -160,6 +158,32 @@ const bot = () => {
     botGanha(2, 6, 4);
     botGanha(4, 6, 2);
 
+    //Impede L pequeno
+    if (jogada == 2) {
+        fecharJogador(3, 7, 6);
+        fecharJogador(1, 3, 0);
+        fecharJogador(1, 5, 2);
+        fecharJogador(5, 7, 8);
+    }
+
+    //Impede L medio
+    if (jogada == 2) {
+        fecharJogador(1, 6, 0);
+        fecharJogador(5, 6, 8); //duas vezes
+        fecharJogador(0, 7, 6);
+        fecharJogador(0, 5, 2);
+        fecharJogador(2, 3, 0);
+        fecharJogador(2, 7, 8);
+        fecharJogador(1, 8, 2);
+        fecharJogador(3, 8, 6);
+    }
+
+    //Impede L grande
+    if (jogada == 2) {
+        fecharJogador(0, 8, 7);
+        fecharJogador(2, 6, 1);
+    }
+
     //Impede de fechar na vertical
     if (botJaJogou == false) {
         fecharJogador(0, 3, 6);
@@ -185,11 +209,6 @@ const bot = () => {
         fecharJogador(3, 5, 4);
         fecharJogador(6, 8, 7);
         fecharJogador(0, 5, 7);
-        fecharJogador(3, 7, 6);
-        fecharJogador(1, 3, 0);
-        fecharJogador(1, 5, 2);
-        fecharJogador(5, 7, 8);
-        fecharJogador(3, 8, 6);
     }
 
     //Impede de fechar na diagonal
@@ -202,18 +221,11 @@ const bot = () => {
         fecharJogador(4, 6, 2);
         fecharJogador(4, 8, 6);
     }
-    if (celulas[0].textContent == 'X' && celulas[8].textContent == 'X') {
-        document.getElementById(7).innerHTML = 'O';
-        botJaJogou = true;
-    }
-    if (celulas[2].textContent == 'X' && celulas[6].textContent == 'X') {
-        document.getElementById(7).innerHTML = 'O';
-        botJaJogou = true;
-    }
 
     if (botJaJogou == false) {
         jogarAleatorio();
     }
+
     botJaJogou = false;
 };
 
@@ -235,6 +247,7 @@ const jogarAleatorio = () => {
         const indiceInteiro = Math.trunc(indice);
         if (celulas[indiceInteiro].textContent == '') {
             document.getElementById(indiceInteiro).innerHTML = 'O';
+            console.log('do rando');
             break;
         }
     }
@@ -256,7 +269,7 @@ const limparGrade = () => {
         celulas[i].innerHTML = '';
     }
     jogoEmAndamento = true;
-    primeiraJogada = true;
+    jogada = 1;
 };
 
 const mostrarModal = () => {
